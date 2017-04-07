@@ -77,7 +77,7 @@ int is_stable(const HepMC::GenParticle *part) {
         }
     }
 
-    return isStable;
+   return isStable;
 }
 
 int is_stable_charged(const HepMC::GenParticle *part) {
@@ -281,18 +281,22 @@ int main(int argc, char **argv) {
     // get the first event
     HepMC::GenEvent* evt = ascii_in.read_next_event();
 
+    int event_counter = 0;
     // loop until we run out of events
     while ( evt )
     {
-        // analyze the event
+       if (!evt) 
+          cerr << "Input file not found " << inname << endl;
+
+       // analyze the event
         if (debug)
             cout << "Event " << endl;
         // also get the heavy-ion info
         HepMC::HeavyIon* ion = evt->heavy_ion();
         double ep_angle = ion->event_plane_angle();
-        if (!evt) 
-            cerr << "Input file not found " << inname << endl;
 
+        printf(" processing event %i with EP %.4f", event_counter, ep_angle);
+        event_counter++;
 
         hNEvent->Fill(0.5,evt->weights()[0]); // count events
 

@@ -11,7 +11,7 @@
 ################################################################################ Define directory paths 
 #    You may have to change GENSERdir and/or other variables
 #
-  HepMCdir             = /usr/lib64
+  HepMCdir             = /home/rbertens/Documents/CERN/alice/JEWEL/x86_64-slc5-gcc41-opt
   HepMClib             = -L$(HepMCdir)/lib -lHepMC
   HepMCfiolib          = -L$(HepMCdir)/lib -lHepMCfio
   GENSERdir            = 
@@ -22,7 +22,7 @@
 #
   CXX           = g++
   F77		= gfortran
-  INCLUDES 	= -I/usr/include -I$(CLHEPdir)/include
+  INCLUDES 	= -I/usr/include -I$(HepMCdir)/include
 #  CXXFLAGS      =   -O -ansi -pedantic -Wall -D_GNU_SOURCE -O2 -g $(INCLUDES)
   CXXFLAGS      =   -O -D_GNU_SOURCE -O2 -g $(INCLUDES)
   FLAGS 	= $(DFLG) $(INCDIR)
